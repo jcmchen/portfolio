@@ -24,3 +24,51 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* pagination, nevigation color */
+@layer base {
+  /* .swiper-button-next,
+  .swiper-button-prev {
+    color: white !important;
+  }
+
+  .swiper-pagination-bullet {
+    background: gray !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: white !important;
+  } */
+  /* Swiper Navigation Arrows with semi-transparent black background */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white !important;            /* 箭頭顏色 */
+    background: rgba(0, 0, 0, 0.2);     /* 半透明黑底 */
+    border-radius: 50%;                 /* 圓形 */
+    width: 44px !important;
+    height: 44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 20px !important;         /* 箭頭大小 */
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.4);     /* hover 時更深 */
+  }
+
+  .swiper-pagination-bullet {
+    background: gray !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: white !important;
+  } 
+}
+
+
