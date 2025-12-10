@@ -61,10 +61,34 @@
 // }
 
 
+// import "./globals.css";
+// import Header from "@/components/Header";
+// import { Roboto } from "next/font/google";
+// import ClientWrapper from "@/components/ClientWrapper";
+
+// const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "500", "700"] });
+
+// export const metadata = {
+//   title: "My Portfolio",
+//   description: "A Next.js portfolio with lazy load and animations",
+// };
+
+// export default function RootLayout({ children }: { children: React.ReactNode }) {
+//   return (
+//     <html lang="en">
+//       <body className={`${roboto.className} bg-white text-gray-900`}>
+//         <Header />
+//         <ClientWrapper>{children}</ClientWrapper>
+//       </body>
+//     </html>
+//   );
+// }
+
 import "./globals.css";
 import Header from "@/components/Header";
 import { Roboto } from "next/font/google";
 import ClientWrapper from "@/components/ClientWrapper";
+import { Suspense } from "react";   // 🔹 新增這行
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "500", "700"] });
 
@@ -77,12 +101,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${roboto.className} bg-white text-gray-900`}>
-        <Header />
-        <ClientWrapper>{children}</ClientWrapper>
+        {/* 🔻 這一整塊是 CSR + useSearchParams 的世界 */}
+        <Suspense fallback={null}>
+          <Header />
+          <ClientWrapper>{children}</ClientWrapper>
+        </Suspense>
       </body>
     </html>
   );
 }
+
 
 
 
